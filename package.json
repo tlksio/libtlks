@@ -1,0 +1,24 @@
+{
+  "name": "libtlks",
+  "version": "0.0.1",
+  "description": "tlks.io core library",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlksio/libtlks.git"
+  },
+  "author": "Raül Pérez <repejota@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tlksio/libtlks/issues"
+  },
+  "homepage": "http://tlks.io",
+  "keywords": [
+    "tlks",
+    "core",
+    "library"
+  ],
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
+}
