@@ -6,6 +6,7 @@ var dburl = "mongodb://dbuser:dbpass@ds043180.mongolab.com:43180/techtalks";
 describe('Talk', function () {
 
     it('get the latest talks', function (done) {
+        this.timeout(0);
         tlks.talk.latest(dburl, 5, function (err, docs) {
             if (err) {
                 throw new Error(err);
@@ -16,6 +17,7 @@ describe('Talk', function () {
     });
 
     it('get the most popular talks', function (done) {
+        this.timeout(0);
         tlks.talk.popular(dburl, 5, function (err, docs) {
             if (err) {
                 throw new Error(err);
@@ -26,6 +28,7 @@ describe('Talk', function () {
     });
 
     it('create a new talk', function (done) {
+        this.timeout(0);
         var talk = {
             id: 'talk_id',
             code: 'talk_code',
@@ -81,6 +84,17 @@ describe('Talk', function () {
 
     it('get a talk by its author id', function () {
         assert.equal(tlks.talk.getByAuthorId(), true);
+    });
+
+    it('delete a talk', function (done) {
+        this.timeout(0);
+        tlks.talk.delete(dburl, 'talk_id', function (err, docs) {
+            if (err) {
+                throw new Error(err);
+            }
+            assert.equal(docs, true);
+            done();
+        });
     });
 
 });
