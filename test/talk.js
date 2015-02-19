@@ -1,13 +1,12 @@
 var assert = require("assert");
 var tlks = require("../index.js");
-
-var dburl = "mongodb://dbuser:dbpass@ds043180.mongolab.com:43180/techtalks";
+var config = require("../config.json");
 
 describe('Talk', function () {
 
     it('get the latest talks', function (done) {
         this.timeout(0);
-        tlks.talk.latest(dburl, 5, function (err, docs) {
+        tlks.talk.latest(config.dburl, 5, function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -18,7 +17,7 @@ describe('Talk', function () {
 
     it('get the most popular talks', function (done) {
         this.timeout(0);
-        tlks.talk.popular(dburl, 5, function (err, docs) {
+        tlks.talk.popular(config.dburl, 5, function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -53,7 +52,7 @@ describe('Talk', function () {
             created: 1423881000025,
             updated: 1423881000025
         };
-        tlks.talk.createTalk(dburl, talk, function (err, docs) {
+        tlks.talk.createTalk(config.dburl, talk, function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -64,7 +63,7 @@ describe('Talk', function () {
 
     it('get a talk', function (done) {
         this.timeout(0);
-        tlks.talk.get(dburl, 'talk_id', function (err, docs) {
+        tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -75,7 +74,7 @@ describe('Talk', function () {
 
     it('play a talk', function (done) {
         this.timeout(0);
-        tlks.talk.play(dburl, 'talk_id', function (err, docs) {
+        tlks.talk.play(config.dburl, 'talk_id', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -86,7 +85,7 @@ describe('Talk', function () {
 
     it('get a talk tagged as', function (done) {
         this.timeout(0);
-        tlks.talk.getByTag(dburl, 'tag1', function (err, docs) {
+        tlks.talk.getByTag(config.dburl, 'tag1', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -97,7 +96,7 @@ describe('Talk', function () {
 
     it('get a talk by its slug field', function (done) {
         this.timeout(0);
-        tlks.talk.getBySlug(dburl, 'talk-title', function (err, docs) {
+        tlks.talk.getBySlug(config.dburl, 'talk-title', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -108,11 +107,11 @@ describe('Talk', function () {
 
     it('get related talks', function (done) {
         this.timeout(0);
-        tlks.talk.get(dburl, 'talk_id', function (err, docs) {
+        tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
-            tlks.talk.related(dburl, docs, function (err, docs) {
+            tlks.talk.related(config.dburl, docs, function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -124,7 +123,7 @@ describe('Talk', function () {
 
     it('get a talk by its author id', function (done) {
         this.timeout(0);
-        tlks.talk.getByAuthorId(dburl, 'talk_id', function (err, docs) {
+        tlks.talk.getByAuthorId(config.dburl, 'talk_id', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
@@ -135,7 +134,7 @@ describe('Talk', function () {
 
     it('delete a talk', function (done) {
         this.timeout(0);
-        tlks.talk.deleteTalk(dburl, 'talk_id', function (err, docs) {
+        tlks.talk.deleteTalk(config.dburl, 'talk_id', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
