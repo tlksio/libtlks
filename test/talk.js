@@ -74,13 +74,25 @@ describe('Talk', function () {
     });
 
     it('play a talk', function (done) {
-        assert.equal(tlks.talk.play(), true);
-        done();
+        this.timeout(0);
+        tlks.talk.play(dburl, 'talk_id', function (err, docs) {
+            if (err) {
+                throw new Error(err);
+            }
+            assert.notEqual(docs, null);
+            done();
+        });
     });
 
     it('get a talk tagged as', function (done) {
-        assert.equal(tlks.talk.getByTag(), true);
-        done();
+        this.timeout(0);
+        tlks.talk.getByTag(dburl, 'tag1', function (err, docs) {
+            if (err) {
+                throw new Error(err);
+            }
+            assert.notEqual(docs, null);
+            done();
+        });
     });
 
     it('get a talk by its slug field', function (done) {
@@ -95,8 +107,19 @@ describe('Talk', function () {
     });
 
     it('get related talks', function (done) {
-        assert.equal(tlks.talk.related(), true);
-        done();
+        this.timeout(0);
+        tlks.talk.get(dburl, 'talk_id', function (err, docs) {
+            if (err) {
+                throw new Error(err);
+            }
+            tlks.talk.related(dburl, docs, function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                assert.notEqual(docs, null);
+                done();
+            });
+        });
     });
 
     it('get a talk by its author id', function (done) {
