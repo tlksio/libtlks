@@ -62,28 +62,52 @@ describe('Talk', function () {
         });
     });
 
-    it('get a talk', function () {
-        assert.equal(tlks.talk.get(), true);
+    it('get a talk', function (done) {
+        this.timeout(0);
+        tlks.talk.get(dburl, 'talk_id', function (err, docs) {
+            if (err) {
+                throw new Error(err);
+            }
+            assert.notEqual(docs, null);
+            done();
+        });
     });
 
-    it('play a talk', function () {
+    it('play a talk', function (done) {
         assert.equal(tlks.talk.play(), true);
+        done();
     });
 
-    it('get a talk tagged as', function () {
+    it('get a talk tagged as', function (done) {
         assert.equal(tlks.talk.getByTag(), true);
+        done();
     });
 
-    it('get a talk by its slug field', function () {
-        assert.equal(tlks.talk.getBySlug(), true);
+    it('get a talk by its slug field', function (done) {
+        this.timeout(0);
+        tlks.talk.getBySlug(dburl, 'talk-title', function (err, docs) {
+            if (err) {
+                throw new Error(err);
+            }
+            assert.notEqual(docs, null);
+            done();
+        });
     });
 
-    it('get related talks', function () {
+    it('get related talks', function (done) {
         assert.equal(tlks.talk.related(), true);
+        done();
     });
 
-    it('get a talk by its author id', function () {
-        assert.equal(tlks.talk.getByAuthorId(), true);
+    it('get a talk by its author id', function (done) {
+        this.timeout(0);
+        tlks.talk.getByAuthorId(dburl, 'talk_id', function (err, docs) {
+            if (err) {
+                throw new Error(err);
+            }
+            assert.notEqual(docs, null);
+            done();
+        });
     });
 
     it('delete a talk', function (done) {
