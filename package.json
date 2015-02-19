@@ -19,6 +19,8 @@
     "library"
   ],
   "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.2",
     "mocha": "^2.1.0"
   },
   "dependencies": {
