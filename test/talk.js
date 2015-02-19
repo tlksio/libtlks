@@ -112,7 +112,7 @@ describe('Talk', function () {
 
     it('delete a talk', function (done) {
         this.timeout(0);
-        tlks.talk.delete(dburl, 'talk_id', function (err, docs) {
+        tlks.talk.deleteTalk(dburl, 'talk_id', function (err, docs) {
             if (err) {
                 throw new Error(err);
             }
