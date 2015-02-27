@@ -35,15 +35,31 @@ describe('Talk', function () {
 
     });
 
-    it('get the most popular talks', function (done) {
-        this.timeout(0);
-        tlks.talk.popular(config.dburl, 5, function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
+    describe ('get the most popular talks', function (done) {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.popular(config.dburl, 5, function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
             done();
         });
+
+        it('returns an array', function (done) {
+            assert.equal(true, util.isArray(result));
+            done();
+        });
+
     });
 
     it('create a new talk', function (done) {
