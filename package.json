@@ -25,6 +25,7 @@
     "mocha": "^2.1.0"
   },
   "dependencies": {
-    "mongodb": "^1.4.30"
+    "mongodb": "^1.4.30",
+    "search-index": "^0.4.15"
   }
 }
