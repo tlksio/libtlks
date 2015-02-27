@@ -106,18 +106,28 @@ describe('Talk', function () {
             done();
         });
 
-
     });
 
-    it('get a talk', function (done) {
-        this.timeout(0);
-        tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
+    describe('get a talk', function (done) {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
             done();
         });
+
     });
 
     it('play a talk', function (done) {
