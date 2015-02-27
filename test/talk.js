@@ -62,39 +62,51 @@ describe('Talk', function () {
 
     });
 
-    it('create a new talk', function (done) {
-        this.timeout(0);
-        var talk = {
-            id: 'talk_id',
-            code: 'talk_code',
-            title: 'Talk title',
-            slug: 'talk-title',
-            description: 'Talk description',
-            author: {
-                id: 'author_authorid',
-                username: 'author_username',
-                avatar: 'http://example.com/avatar.jpg'
-            },
-            viewCount: 0,
-            voteCount: 0,
-            votes: [],
-            favoriteCount: 0,
-            favorites: [],
-            tags: [
-                'tag1',
-                'tag2',
-                'tag3'
-            ],
-            created: 1423881000025,
-            updated: 1423881000025
-        };
-        tlks.talk.createTalk(config.dburl, talk, function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
+    describe ('create a new talk', function (done) {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            var talk = {
+                id: 'talk_id',
+                code: 'talk_code',
+                title: 'Talk title',
+                slug: 'talk-title',
+                description: 'Talk description',
+                author: {
+                    id: 'author_authorid',
+                    username: 'author_username',
+                    avatar: 'http://example.com/avatar.jpg'
+                },
+                viewCount: 0,
+                voteCount: 0,
+                votes: [],
+                favoriteCount: 0,
+                favorites: [],
+                tags: [
+                    'tag1',
+                    'tag2',
+                    'tag3'
+                ],
+                created: 1423881000025,
+                updated: 1423881000025
+            };
+            tlks.talk.createTalk(config.dburl, talk, function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
             done();
         });
+
+
     });
 
     it('get a talk', function (done) {
