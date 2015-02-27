@@ -1,18 +1,36 @@
 var assert = require("assert");
+var util = require('util');
+
 var tlks = require("../index.js");
 var config = require("../config.json");
 
 describe('Talk', function () {
 
-    it('get the latest talks', function (done) {
-        this.timeout(0);
-        tlks.talk.latest(config.dburl, 5, function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
+    describe('get the latest talks', function () {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.latest(config.dburl, 5, function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
             done();
         });
+
+        it('returns an array', function (done) {
+            assert.equal(true, util.isArray(result));
+            done();
+        });
+
     });
 
     it('get the most popular talks', function (done) {
