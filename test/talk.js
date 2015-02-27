@@ -152,44 +152,78 @@ describe('Talk', function () {
 
     });
 
-    it('get a talk tagged as', function (done) {
-        this.timeout(0);
-        tlks.talk.getByTag(config.dburl, 'tag1', function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
-            done();
-        });
-    });
+    describe('get a talk tagged as', function () {
 
-    it('get a talk by its slug field', function (done) {
-        this.timeout(0);
-        tlks.talk.getBySlug(config.dburl, 'talk-title', function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
-            done();
-        });
-    });
+        var result;
 
-    it('get related talks', function (done) {
-        this.timeout(0);
-        tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            tlks.talk.related(config.dburl, docs, function (err, docs) {
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.getByTag(config.dburl, 'tag1', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
-                assert.notEqual(docs, null);
+                result = docs;
                 done();
             });
         });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
+            done();
+        });
+
     });
 
+    describe('get a talk by its slug field', function () {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.getBySlug(config.dburl, 'talk-title', function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
+            done();
+        });
+
+    });
+
+    describe('get related talks', function () {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                tlks.talk.related(config.dburl, docs, function (err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
+                });
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
+            done();
+        });
+
+    });
+
+    /*
     it('get a talk by its author id', function (done) {
         this.timeout(0);
         tlks.talk.getByAuthorId(config.dburl, 'talk_id', function (err, docs) {
@@ -211,5 +245,5 @@ describe('Talk', function () {
             done();
         });
     });
-
+    */
 });
