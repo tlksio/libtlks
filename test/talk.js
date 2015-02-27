@@ -35,7 +35,7 @@ describe('Talk', function () {
 
     });
 
-    describe ('get the most popular talks', function (done) {
+    describe ('get the most popular talks', function () {
 
         var result;
 
@@ -62,7 +62,7 @@ describe('Talk', function () {
 
     });
 
-    describe ('create a new talk', function (done) {
+    describe ('create a new talk', function () {
 
         var result;
 
@@ -108,7 +108,7 @@ describe('Talk', function () {
 
     });
 
-    describe('get a talk', function (done) {
+    describe('get a talk', function () {
 
         var result;
 
@@ -130,15 +130,26 @@ describe('Talk', function () {
 
     });
 
-    it('play a talk', function (done) {
-        this.timeout(0);
-        tlks.talk.play(config.dburl, 'talk_id', function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
+    describe('play a talk', function () {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.play(config.dburl, 'talk_id', function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
             done();
         });
+
     });
 
     it('get a talk tagged as', function (done) {
