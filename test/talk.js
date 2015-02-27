@@ -3,7 +3,7 @@ var util = require('util');
 
 var tlks = require("../index.js");
 var config = {
-    dburl: "mongodb://travis@test:localhost/techtalks"
+    dburl: "mongodb://travis@test:localhost:27017/techtalks"
 };
 
 describe('Talk', function () {
