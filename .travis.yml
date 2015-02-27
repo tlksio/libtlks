@@ -3,7 +3,9 @@ services:
   - mongodb
 before_script:
   - sleep 15
-  - mongo mydb_test --eval 'db.addUser("travis", "test");'
+  - mongo techtalks --eval 'db.addUser("travis", "test");'
+env:
+  - DBURL="mongodb://travis:test@localhost:27017/techtalks"
 node_js:
   - 0.12
 install:

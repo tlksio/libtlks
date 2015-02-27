@@ -3,7 +3,7 @@ var util = require('util');
 
 var tlks = require("../index.js");
 var config = {
-    dburl: "mongodb://travis@test:localhost:27017/techtalks"
+    dburl: process.env.DBURL
 };
 
 describe('Talk', function () {
@@ -13,6 +13,7 @@ describe('Talk', function () {
         var result;
 
         before( function (done) {
+            console.log(config);
             this.timeout(0);
             tlks.talk.latest(config.dburl, 5, function (err, docs) {
                 if (err) {
