@@ -2,7 +2,9 @@ var assert = require("assert");
 var util = require('util');
 
 var tlks = require("../index.js");
-var config = require("../config.json");
+var config = {
+    dburl: "mongodb://travis@test:localhost/techtalks"
+};
 
 describe('Talk', function () {
 

@@ -1,6 +1,10 @@
 language: node_js
+services:
+  - mongodb
+before_script:
+  - sleep 15
+  - mongo mydb_test --eval 'db.addUser("travis", "test");'
 node_js:
   - 0.12
 install:
   - npm install
-script: mocha test
