@@ -140,18 +140,12 @@ describe('Talk', function() {
                     throw new Error(err);
                 }
                 result = docs;
-                console.log(result);
                 done();
             });
         });
 
         it('returns not null', function(done) {
             assert.notEqual(result, null);
-            done();
-        });
-
-        it('is a valid talk object', function(done) {
-            isValidTalk(result);
             done();
         });
 
