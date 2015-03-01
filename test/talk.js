@@ -223,27 +223,48 @@ describe('Talk', function () {
 
     });
 
-    /*
-    it('get a talk by its author id', function (done) {
-        this.timeout(0);
-        tlks.talk.getByAuthorId(config.dburl, 'talk_id', function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.notEqual(docs, null);
+    describe('get a talk by its author id', function () {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.getByAuthorId(config.dburl, 'talk_id', function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
             done();
         });
+
     });
 
-    it('delete a talk', function (done) {
-        this.timeout(0);
-        tlks.talk.deleteTalk(config.dburl, 'talk_id', function (err, docs) {
-            if (err) {
-                throw new Error(err);
-            }
-            assert.equal(docs, true);
+    describe('delete a talk', function () {
+
+        var result;
+
+        before( function (done) {
+            this.timeout(0);
+            tlks.talk.deleteTalk(config.dburl, 'talk_id', function (err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs
+                done();
+            });
+        });
+
+        it('returns not null', function (done) {
+            assert.notEqual(result, null);
             done();
         });
+
     });
-    */
+
 });
