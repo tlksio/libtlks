@@ -1,7 +1,8 @@
 var assert = require("assert");
 var util = require('util');
 
-var tlks = require("../index.js");
+var talks = require("../index.js").talk;
+
 var config = {
     dburl: process.env.DBURL
 };
@@ -14,7 +15,7 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.latest(config.dburl, 5, function (err, docs) {
+            talks.latest(config.dburl, 5, function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -31,6 +32,16 @@ describe('Talk', function () {
         it('returns an array', function (done) {
             assert.equal(true, util.isArray(result));
             done();
+        });
+
+        it('array elements have _id field not null', function () {
+            result.every(function (el) {
+                var hasid = el ? hasOwnProperty.call(el, "_id") : false;
+                assert.equal(true, hasid);
+                assert.notEqual(null, el._id);
+                assert.notEqual('', el._id);
+                return hasid;
+            });
         });
 
     });
@@ -41,7 +52,7 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.popular(config.dburl, 5, function (err, docs) {
+            talks.popular(config.dburl, 5, function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -58,6 +69,16 @@ describe('Talk', function () {
         it('returns an array', function (done) {
             assert.equal(true, util.isArray(result));
             done();
+        });
+
+        it('array elements have _id field not null', function () {
+            result.every(function (el) {
+                var hasid = el ? hasOwnProperty.call(el, "_id") : false;
+                assert.equal(true, hasid);
+                assert.notEqual(null, el._id);
+                assert.notEqual('', el._id);
+                return hasid;
+            });
         });
 
     });
@@ -92,7 +113,7 @@ describe('Talk', function () {
                 created: 1423881000025,
                 updated: 1423881000025
             };
-            tlks.talk.createTalk(config.dburl, talk, function (err, docs) {
+            talks.createTalk(config.dburl, talk, function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -114,17 +135,23 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
+            talks.get(config.dburl, 'talk_id', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
                 result = docs;
+                console.log(result);
                 done();
             });
         });
 
         it('returns not null', function (done) {
             assert.notEqual(result, null);
+            done();
+        });
+
+        it('is a valid talk object', function (done) {
+            isValidTalk(result);
             done();
         });
 
@@ -136,7 +163,7 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.play(config.dburl, 'talk_id', function (err, docs) {
+            talks.play(config.dburl, 'talk_id', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -158,7 +185,7 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.getByTag(config.dburl, 'tag1', function (err, docs) {
+            talks.getByTag(config.dburl, 'tag1', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -180,7 +207,7 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.getBySlug(config.dburl, 'talk-title', function (err, docs) {
+            talks.getBySlug(config.dburl, 'talk-title', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -202,11 +229,11 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.get(config.dburl, 'talk_id', function (err, docs) {
+            talks.get(config.dburl, 'talk_id', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
-                tlks.talk.related(config.dburl, docs, function (err, docs) {
+                talks.related(config.dburl, docs, function (err, docs) {
                     if (err) {
                         throw new Error(err);
                     }
@@ -229,7 +256,7 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.getByAuthorId(config.dburl, 'talk_id', function (err, docs) {
+            talks.getByAuthorId(config.dburl, 'talk_id', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -251,7 +278,7 @@ describe('Talk', function () {
 
         before( function (done) {
             this.timeout(0);
-            tlks.talk.deleteTalk(config.dburl, 'talk_id', function (err, docs) {
+            talks.deleteTalk(config.dburl, 'talk_id', function (err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
