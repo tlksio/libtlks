@@ -7,15 +7,15 @@ var config = {
     dburl: process.env.DBURL
 };
 
-describe('Talk', function () {
+describe('Talk', function() {
 
-    describe('get the latest talks', function () {
+    describe('get the latest talks', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.latest(config.dburl, 5, function (err, docs) {
+            talks.latest(config.dburl, 5, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -24,18 +24,18 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
-        it('returns an array', function (done) {
+        it('returns an array', function(done) {
             assert.equal(true, util.isArray(result));
             done();
         });
 
-        it('array elements have _id field not null', function () {
-            result.every(function (el) {
+        it('array elements have _id field not null', function() {
+            result.every(function(el) {
                 var hasid = el ? hasOwnProperty.call(el, "_id") : false;
                 assert.equal(true, hasid);
                 assert.notEqual(null, el._id);
@@ -46,13 +46,13 @@ describe('Talk', function () {
 
     });
 
-    describe ('get the most popular talks', function () {
+    describe('get the most popular talks', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.popular(config.dburl, 5, function (err, docs) {
+            talks.popular(config.dburl, 5, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -61,18 +61,18 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
-        it('returns an array', function (done) {
+        it('returns an array', function(done) {
             assert.equal(true, util.isArray(result));
             done();
         });
 
-        it('array elements have _id field not null', function () {
-            result.every(function (el) {
+        it('array elements have _id field not null', function() {
+            result.every(function(el) {
                 var hasid = el ? hasOwnProperty.call(el, "_id") : false;
                 assert.equal(true, hasid);
                 assert.notEqual(null, el._id);
@@ -83,11 +83,11 @@ describe('Talk', function () {
 
     });
 
-    describe ('create a new talk', function () {
+    describe('create a new talk', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
             var talk = {
                 id: 'talk_id',
@@ -113,7 +113,7 @@ describe('Talk', function () {
                 created: 1423881000025,
                 updated: 1423881000025
             };
-            talks.createTalk(config.dburl, talk, function (err, docs) {
+            talks.createTalk(config.dburl, talk, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -122,20 +122,20 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
     });
 
-    describe('get a talk', function () {
+    describe('get a talk', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.get(config.dburl, 'talk_id', function (err, docs) {
+            talks.get(config.dburl, 'talk_id', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -145,25 +145,25 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
-        it('is a valid talk object', function (done) {
+        it('is a valid talk object', function(done) {
             isValidTalk(result);
             done();
         });
 
     });
 
-    describe('play a talk', function () {
+    describe('play a talk', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.play(config.dburl, 'talk_id', function (err, docs) {
+            talks.play(config.dburl, 'talk_id', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -172,20 +172,20 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
     });
 
-    describe('get a talk tagged as', function () {
+    describe('get a talk tagged as', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.getByTag(config.dburl, 'tag1', function (err, docs) {
+            talks.getByTag(config.dburl, 'tag1', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -194,20 +194,20 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
     });
 
-    describe('get a talk by its slug field', function () {
+    describe('get a talk by its slug field', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.getBySlug(config.dburl, 'talk-title', function (err, docs) {
+            talks.getBySlug(config.dburl, 'talk-title', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -216,24 +216,24 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
     });
 
-    describe('get related talks', function () {
+    describe('get related talks', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.get(config.dburl, 'talk_id', function (err, docs) {
+            talks.get(config.dburl, 'talk_id', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
-                talks.related(config.dburl, docs, function (err, docs) {
+                talks.related(config.dburl, docs, function(err, docs) {
                     if (err) {
                         throw new Error(err);
                     }
@@ -243,20 +243,20 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
     });
 
-    describe('get a talk by its author id', function () {
+    describe('get a talk by its author id', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.getByAuthorId(config.dburl, 'talk_id', function (err, docs) {
+            talks.getByAuthorId(config.dburl, 'talk_id', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -265,20 +265,20 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
 
     });
 
-    describe('delete a talk', function () {
+    describe('delete a talk', function() {
 
         var result;
 
-        before( function (done) {
+        before(function(done) {
             this.timeout(0);
-            talks.deleteTalk(config.dburl, 'talk_id', function (err, docs) {
+            talks.deleteTalk(config.dburl, 'talk_id', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -287,7 +287,7 @@ describe('Talk', function () {
             });
         });
 
-        it('returns not null', function (done) {
+        it('returns not null', function(done) {
             assert.notEqual(result, null);
             done();
         });
