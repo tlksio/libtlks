@@ -63,4 +63,34 @@ describe('User', function() {
 
     });
 
+    describe('update user', function () {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            users.getByUsername(config.dburl, "username", function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                result.bio = 'updated';
+                users.update(config.dburl, result, function (err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
+                });
+            });
+        });
+
+        it('returns is null', function(done) {
+            assert.equal(result, null);
+            done();
+        });
+
+
+    });
+
 });
