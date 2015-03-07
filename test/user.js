@@ -41,4 +41,26 @@ describe('User', function() {
 
     });
 
+    describe('get user by its username', function () {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            users.getByUsername(config.dburl, "username", function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function(done) {
+            assert.notEqual(result, null);
+            done();
+        });
+
+    });
+
 });
