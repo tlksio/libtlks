@@ -10,4 +10,9 @@ lint:
 clean:
 	./node_modules/.bin/gulp clean
 
-.PHONY: test cover lint clean
+dist:
+	./node_modules/.bin/gulp dist
+
+all: lint test dist
+
+.PHONY: test cover lint clean dist all

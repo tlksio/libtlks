@@ -1,35 +1,38 @@
 {
-    "name": "libtlks",
-    "version": "0.0.3",
-    "description": "tlks.io core library",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/tlksio/libtlks.git"
-    },
-    "author": "Raül Pérez <repejota@gmail.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/tlksio/libtlks/issues"
-    },
-    "homepage": "http://tlks.io",
-    "keywords": [
-        "tlks",
-        "core",
-        "library"
-    ],
-    "devDependencies": {
-        "gulp": "^3.8.11",
-        "gulp-clean": "^0.3.1",
-        "gulp-jshint": "^1.9.2",
-        "istanbul": "^0.3.6",
-        "mocha": "^2.1.0"
-    },
-    "dependencies": {
-        "mongodb": "^1.4.30",
-        "search-index": "^0.4.15"
-    },
-    "scripts": {
-        "test": "mocha"
-    }
+  "name": "libtlks",
+  "version": "0.0.4",
+  "description": "tlks.io core library",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlksio/libtlks.git"
+  },
+  "author": "Raül Pérez <repejota@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tlksio/libtlks/issues"
+  },
+  "homepage": "http://tlks.io",
+  "keywords": [
+    "tlks",
+    "core",
+    "library"
+  ],
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.9.2",
+    "gulp-rename": "^1.2.0",
+    "gulp-sourcemaps": "^1.5.0",
+    "gulp-uglify": "^1.1.0",
+    "istanbul": "^0.3.6",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "mongodb": "^1.4.30"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }
