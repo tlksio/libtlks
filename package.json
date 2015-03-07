@@ -1,6 +1,6 @@
 {
   "name": "libtlks",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "tlks.io core library",
   "main": "index.js",
   "repository": {
