@@ -173,6 +173,28 @@ describe('Talk', function() {
 
     });
 
+    describe('vote a talk', function() {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            talks.upvote(config.dburl, "talk_id", "userid", function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function(done) {
+            assert.notEqual(result, null);
+            done();
+        });
+
+    });
+
     describe('favorite a talk', function() {
 
         var result;
