@@ -9,7 +9,6 @@ tlks.io core library
 - [Build status](#build-status)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [TODO](#todo)
-- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [Versioning](#versioning)
 - [Creators](#creators)
@@ -18,7 +17,7 @@ tlks.io core library
 ## Documentation
 
 Please check the whole Project Documentation repo at:
-[tlks.io documentation](https://github.com/tlksio/docs)
+[tlks.io documentation](https://github.com/tlksio/libtlks)
 
 ## Build status
 
@@ -37,7 +36,7 @@ addressed yet,
 ## TODO
 
 In order of precendence always work on existing
-[issues](https://github.com/tlksio/vagrant/issues) before spending hours on
+[issues](https://github.com/tlksio/libtlks/issues) before spending hours on
 new things.
 
 If you have an idea for the future and it is not planed on the global
@@ -79,7 +78,7 @@ up, but we'll adhere to those rules whenever possible.
 - <https://twitter.com/repejota>
 - <https://github.com/repejota>
 
-## Copyright and license
+## Copyright and License
 
 Code and documentation copyright 2015 tlks.io authors.
 
