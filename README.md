@@ -5,6 +5,7 @@ tlks.io core library
 
 ## Table of contents
 
+- [Quick start](#quick-start)
 - [Documentation](#documentation)
 - [Build status](#build-status)
 - [Bugs and feature requests](#bugs-and-feature-requests)
@@ -13,6 +14,17 @@ tlks.io core library
 - [Versioning](#versioning)
 - [Creators](#creators)
 - [Copyright and license](#copyright-and-license)
+
+## Quick Start
+
+You need *node.js* installed:
+
+```
+$ git clone http://github.com/tlksio/libtlks
+$ cd libtlks
+$ npm install
+$ make test
+```
 
 ## Documentation
 
