@@ -38,7 +38,9 @@ Please check the whole Project Documentation repo at:
 * Branch Develop : [![Build Status Develop](https://travis-ci.org/tlksio/libtlks.svg?branch=develop)](https://travis-ci.org/tlksio/libtlks)
 
 
-* Coverage Develop : [![Coverage Status](https://coveralls.io/repos/tlksio/libtlks/badge.svg)](https://coveralls.io/r/tlksio/libtlks)
+* Coverage Master : [![Coverage Status Master](https://coveralls.io/repos/tlksio/libtlks/badge.svg?branch=master)](https://coveralls.io/r/tlksio/libtlks?branch=master)
+
+* Coverage Develop : [![Coverage Status Develop](https://coveralls.io/repos/tlksio/libtlks/badge.svg?branch=develop)](https://coveralls.io/r/tlksio/libtlks?branch=develop)
 
 ## Bugs and feature requests
 
