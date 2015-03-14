@@ -11,7 +11,6 @@ var config = {
 function isValidUser(user) {
     user.should.have.properties([
         "id",
-        "code",
         "avatar",
         "username",
         "bio",
@@ -32,7 +31,6 @@ describe('User', function() {
             this.timeout(0);
             var user = {
                 "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                "code": "xxxxxxxxx",
                 "avatar": "http://pbs.twimg.com/profile_images/xxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpeg",
                 "username": "username",
                 "bio": "username biography",
