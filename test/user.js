@@ -9,7 +9,17 @@ var config = {
 };
 
 function isValidUser(user) {
-    (5).should.be.exactly(5).and.be.a.Number;
+    user.should.have.properties([
+        "id",
+        "code",
+        "avatar",
+        "username",
+        "bio",
+        "twitterId",
+        "created",
+        "updated",
+        "email",
+    ]);
 };
 
 describe('User', function() {
@@ -22,6 +32,7 @@ describe('User', function() {
             this.timeout(0);
             var user = {
                 "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "code": "xxxxxxxxx",
                 "avatar": "http://pbs.twimg.com/profile_images/xxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpeg",
                 "username": "username",
                 "bio": "username biography",
@@ -40,12 +51,18 @@ describe('User', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null, "user created object is not null");
+            done();
+        });
+
+        it('returns a one element list', function(done) {
+            result.should.have.length(1);
             done();
         });
 
         it('is valid user object', function(done) {
-            isValidUser(result);
+            var user = result[0];
+            isValidUser(user);
             done();
         });
 
