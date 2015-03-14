@@ -86,6 +86,18 @@ describe('User', function() {
             done();
         });
 
+        it('returns a one element list', function(done) {
+            result.should.have.length(1);
+            done();
+        });
+
+        it('is valid user object', function(done) {
+            var user = result[0];
+            isValidUser(user);
+            done();
+        });
+
+
     });
 
     describe('update user', function () {
