@@ -1,6 +1,6 @@
 {
   "name": "libtlks",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "tlks.io core library",
   "main": "index.js",
   "repository": {
@@ -35,6 +35,6 @@
     "mongodb": "^1.4.30"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "make cover"
   }
 }
