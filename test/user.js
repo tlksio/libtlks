@@ -1,10 +1,15 @@
 var assert = require("assert");
+var should = require('should');
 var util = require('util');
 
 var users = require("../index.js").user;
 
 var config = {
     dburl: process.env.DBURL
+};
+
+function isValidUser(user) {
+    (5).should.be.exactly(5).and.be.a.Number;
 };
 
 describe('User', function() {
@@ -36,6 +41,11 @@ describe('User', function() {
 
         it('returns not null', function(done) {
             assert.notEqual(result, null);
+            done();
+        });
+
+        it('is valid user object', function(done) {
+            isValidUser(result);
             done();
         });
 
