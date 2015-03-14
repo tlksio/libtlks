@@ -157,7 +157,7 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.play(config.dburl, 'talk_id', function(err, docs) {
+            talks.play(config.dburl, 'talk-title', function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
