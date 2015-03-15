@@ -414,6 +414,35 @@ describe('Talk', function() {
 
     });
 
+    describe('get talks upvoted by an user', function () {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            talks.getUpvotedByAuthorId(config.dburl, 'author_authorid', function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function(done) {
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
+    });
+
     describe('delete a talk', function() {
 
         var result;
