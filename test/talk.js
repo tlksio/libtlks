@@ -1,10 +1,29 @@
-var assert = require("assert");
+var should = require("should");
 var util = require('util');
 
 var talks = require("../index.js").talk;
 
 var config = {
     dburl: process.env.DBURL
+};
+
+function isValidTalk(talk) {
+    talk.should.have.properties([
+       "id",
+       "code",
+       "title",
+       "slug",
+       "description",
+       "author",
+       "viewCount",
+       "voteCount",
+       "votes",
+       "favoriteCount",
+       "favorites",
+       "tags",
+       "created",
+       "updated"
+    ]);
 };
 
 describe('Talk', function() {
@@ -25,23 +44,20 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
         it('returns an array', function(done) {
-            assert.equal(true, util.isArray(result));
+            should.equal(true, util.isArray(result));
             done();
         });
 
-        it('array elements have _id field not null', function() {
-            result.every(function(el) {
-                var hasid = el ? hasOwnProperty.call(el, "_id") : false;
-                assert.equal(true, hasid);
-                assert.notEqual(null, el._id);
-                assert.notEqual('', el._id);
-                return hasid;
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
             });
+            done();
         });
 
     });
@@ -62,23 +78,20 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
         it('returns an array', function(done) {
-            assert.equal(true, util.isArray(result));
+            should.equal(true, util.isArray(result));
             done();
         });
 
-        it('array elements have _id field not null', function() {
-            result.every(function(el) {
-                var hasid = el ? hasOwnProperty.call(el, "_id") : false;
-                assert.equal(true, hasid);
-                assert.notEqual(null, el._id);
-                assert.notEqual('', el._id);
-                return hasid;
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
             });
+            done();
         });
 
     });
@@ -123,9 +136,17 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
 
     });
 
@@ -145,7 +166,12 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('is valid talk object', function(done) {
+            isValidTalk(result);
             done();
         });
 
@@ -167,9 +193,15 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('is valid talk object', function(done) {
+            isValidTalk(result);
+            done();
+        });
+
 
     });
 
@@ -189,9 +221,15 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('sucsessful vote is equal to 1', function(done) {
+            should.equal(result, 1);
+            done();
+        });
+
 
     });
 
@@ -211,7 +249,12 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('successful favorite is equal to 1', function(done) {
+            should.equal(result, 1);
             done();
         });
 
@@ -233,9 +276,15 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('successful unfavorite is equal to 1', function(done) {
+            should.equal(result, 1);
+            done();
+        });
+
 
     });
 
@@ -256,9 +305,17 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
 
     });
 
@@ -278,9 +335,17 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
 
     });
 
@@ -305,9 +370,17 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
 
     });
 
@@ -327,9 +400,17 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
 
     });
 
@@ -349,9 +430,15 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
+
+        it('successful delete is equal to 1', function(done) {
+            should.equal(1, result);
+            done();
+        });
+
 
     });
 

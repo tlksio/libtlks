@@ -1,4 +1,4 @@
-var assert = require("assert");
+var should = require("should");
 var should = require('should');
 var util = require('util');
 
@@ -9,7 +9,16 @@ var config = {
 };
 
 function isValidUser(user) {
-    (5).should.be.exactly(5).and.be.a.Number;
+    user.should.have.properties([
+        "id",
+        "avatar",
+        "username",
+        "bio",
+        "twitterId",
+        "created",
+        "updated",
+        "email",
+    ]);
 };
 
 describe('User', function() {
@@ -40,12 +49,19 @@ describe('User', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null, "user created object is not null");
+            done();
+        });
+
+        it('returns a one element list', function(done) {
+            should.equal(true, util.isArray(result));
+            result.should.have.length(1);
             done();
         });
 
         it('is valid user object', function(done) {
-            isValidUser(result);
+            var user = result[0];
+            isValidUser(user);
             done();
         });
 
@@ -67,7 +83,13 @@ describe('User', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('is valid user object', function(done) {
+            var user = result;
+            isValidUser(user);
             done();
         });
 
@@ -96,10 +118,9 @@ describe('User', function() {
         });
 
         it('returns is null', function(done) {
-            assert.equal(result, null);
+            should.equal(result, null);
             done();
         });
-
 
     });
 
