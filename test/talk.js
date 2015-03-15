@@ -1,10 +1,14 @@
-var assert = require("assert");
+var should = require("should");
 var util = require('util');
 
 var talks = require("../index.js").talk;
 
 var config = {
     dburl: process.env.DBURL
+};
+
+function isValidTalk(talk) {
+    console.log(talk);
 };
 
 describe('Talk', function() {
@@ -25,21 +29,21 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
         it('returns an array', function(done) {
-            assert.equal(true, util.isArray(result));
+            should.equal(true, util.isArray(result));
             done();
         });
 
         it('array elements have _id field not null', function() {
             result.every(function(el) {
                 var hasid = el ? hasOwnProperty.call(el, "_id") : false;
-                assert.equal(true, hasid);
-                assert.notEqual(null, el._id);
-                assert.notEqual('', el._id);
+                should.equal(true, hasid);
+                should.notEqual(null, el._id);
+                should.notEqual('', el._id);
                 return hasid;
             });
         });
@@ -62,21 +66,21 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
         it('returns an array', function(done) {
-            assert.equal(true, util.isArray(result));
+            should.equal(true, util.isArray(result));
             done();
         });
 
         it('array elements have _id field not null', function() {
             result.every(function(el) {
                 var hasid = el ? hasOwnProperty.call(el, "_id") : false;
-                assert.equal(true, hasid);
-                assert.notEqual(null, el._id);
-                assert.notEqual('', el._id);
+                should.equal(true, hasid);
+                should.notEqual(null, el._id);
+                should.notEqual('', el._id);
                 return hasid;
             });
         });
@@ -123,7 +127,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -145,7 +149,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -167,7 +171,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -189,7 +193,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -211,7 +215,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -233,7 +237,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -256,7 +260,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -278,7 +282,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -305,7 +309,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -327,7 +331,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 
@@ -349,7 +353,7 @@ describe('Talk', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
+            should.notEqual(result, null);
             done();
         });
 

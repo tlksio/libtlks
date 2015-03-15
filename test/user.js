@@ -1,4 +1,3 @@
-var assert = require("assert");
 var should = require("should");
 var should = require('should');
 var util = require('util');
@@ -118,7 +117,7 @@ describe('User', function() {
         });
 
         it('returns is null', function(done) {
-            assert.equal(result, null);
+            should.equal(result, null);
             done();
         });
 
