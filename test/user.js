@@ -54,6 +54,7 @@ describe('User', function() {
         });
 
         it('returns a one element list', function(done) {
+            should.equal(true, util.isArray(result));
             result.should.have.length(1);
             done();
         });

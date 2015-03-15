@@ -8,7 +8,22 @@ var config = {
 };
 
 function isValidTalk(talk) {
-    console.log(talk);
+    talk.should.have.properties([
+       "id",
+       "code",
+       "title",
+       "slug",
+       "description",
+       "author",
+       "viewCount",
+       "voteCount",
+       "votes",
+       "favoriteCount",
+       "favorites",
+       "tags",
+       "created",
+       "updated"
+    ]);
 };
 
 describe('Talk', function() {
@@ -38,14 +53,11 @@ describe('Talk', function() {
             done();
         });
 
-        it('array elements have _id field not null', function() {
-            result.every(function(el) {
-                var hasid = el ? hasOwnProperty.call(el, "_id") : false;
-                should.equal(true, hasid);
-                should.notEqual(null, el._id);
-                should.notEqual('', el._id);
-                return hasid;
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
             });
+            done();
         });
 
     });
@@ -75,14 +87,11 @@ describe('Talk', function() {
             done();
         });
 
-        it('array elements have _id field not null', function() {
-            result.every(function(el) {
-                var hasid = el ? hasOwnProperty.call(el, "_id") : false;
-                should.equal(true, hasid);
-                should.notEqual(null, el._id);
-                should.notEqual('', el._id);
-                return hasid;
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
             });
+            done();
         });
 
     });
@@ -131,6 +140,14 @@ describe('Talk', function() {
             done();
         });
 
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
+
     });
 
     describe('get a talk', function() {
@@ -150,6 +167,11 @@ describe('Talk', function() {
 
         it('returns not null', function(done) {
             should.notEqual(result, null);
+            done();
+        });
+
+        it('is valid talk object', function(done) {
+            isValidTalk(result);
             done();
         });
 
@@ -175,6 +197,12 @@ describe('Talk', function() {
             done();
         });
 
+        it('is valid talk object', function(done) {
+            isValidTalk(result);
+            done();
+        });
+
+
     });
 
     describe('vote a talk', function() {
@@ -197,6 +225,12 @@ describe('Talk', function() {
             done();
         });
 
+        it('sucsessful vote is equal to 1', function(done) {
+            should.equal(result, 1);
+            done();
+        });
+
+
     });
 
     describe('favorite a talk', function() {
@@ -216,6 +250,11 @@ describe('Talk', function() {
 
         it('returns not null', function(done) {
             should.notEqual(result, null);
+            done();
+        });
+
+        it('successful favorite is equal to 1', function(done) {
+            should.equal(result, 1);
             done();
         });
 
@@ -241,6 +280,12 @@ describe('Talk', function() {
             done();
         });
 
+        it('successful unfavorite is equal to 1', function(done) {
+            should.equal(result, 1);
+            done();
+        });
+
+
     });
 
 
@@ -264,6 +309,14 @@ describe('Talk', function() {
             done();
         });
 
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
+
     });
 
     describe('get a talk by its slug field', function() {
@@ -285,6 +338,14 @@ describe('Talk', function() {
             should.notEqual(result, null);
             done();
         });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
 
     });
 
@@ -313,6 +374,14 @@ describe('Talk', function() {
             done();
         });
 
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
+
     });
 
     describe('get a talk by its author id', function() {
@@ -335,6 +404,14 @@ describe('Talk', function() {
             done();
         });
 
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
+
     });
 
     describe('delete a talk', function() {
@@ -356,6 +433,12 @@ describe('Talk', function() {
             should.notEqual(result, null);
             done();
         });
+
+        it('successful delete is equal to 1', function(done) {
+            should.equal(1, result);
+            done();
+        });
+
 
     });
 
