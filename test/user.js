@@ -1,4 +1,5 @@
 var assert = require("assert");
+var should = require("should");
 var should = require('should');
 var util = require('util');
 
@@ -82,21 +83,15 @@ describe('User', function() {
         });
 
         it('returns not null', function(done) {
-            assert.notEqual(result, null);
-            done();
-        });
-
-        it('returns a one element list', function(done) {
-            result.should.have.length(1);
+            should.notEqual(result, null);
             done();
         });
 
         it('is valid user object', function(done) {
-            var user = result[0];
+            var user = result;
             isValidUser(user);
             done();
         });
-
 
     });
 
@@ -126,7 +121,6 @@ describe('User', function() {
             assert.equal(result, null);
             done();
         });
-
 
     });
 
