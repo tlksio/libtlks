@@ -23,6 +23,14 @@ function isValidUser(user) {
 
 describe('User', function() {
 
+    before(function(done) {
+        if (!config.dburl) {
+            console.log("ERROR: DBURL environment variable doesn't exists!");
+            process.exit();
+        }
+        done();
+    });
+
     describe('create a new user', function() {
 
         var result;
@@ -67,7 +75,7 @@ describe('User', function() {
 
     });
 
-    describe('get user by its username', function () {
+    describe('get user by its username', function() {
 
         var result;
 
@@ -95,7 +103,7 @@ describe('User', function() {
 
     });
 
-    describe('update user', function () {
+    describe('update user', function() {
 
         var result;
 
@@ -107,7 +115,7 @@ describe('User', function() {
                 }
                 result = docs;
                 result.bio = 'updated';
-                users.update(config.dburl, result, function (err, docs) {
+                users.update(config.dburl, result, function(err, docs) {
                     if (err) {
                         throw new Error(err);
                     }
