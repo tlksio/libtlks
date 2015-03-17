@@ -361,7 +361,7 @@ describe('Talk', function() {
                 if (err) {
                     throw new Error(err);
                 }
-                talks.related(config.dburl, docs, function(err, docs) {
+                talks.related(config.dburl, docs, 5, function(err, docs) {
                     if (err) {
                         throw new Error(err);
                     }
