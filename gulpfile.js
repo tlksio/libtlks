@@ -1,17 +1,16 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
-var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var coveralls = require('gulp-coveralls');
+var del = require('del');
 
 gulp.task('clean', function() {
-    return gulp.src(['node_modules', 'coverage'], {
-            read: false
-        })
-        .pipe(clean());
+    del(['node_modules', 'coverage'], function(err, delfiles) {
+        return err
+    });
 });
 
 gulp.task('dist', function() {
