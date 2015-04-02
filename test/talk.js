@@ -9,24 +9,32 @@ var config = {
 
 function isValidTalk(talk) {
     talk.should.have.properties([
-       "id",
-       "code",
-       "title",
-       "slug",
-       "description",
-       "author",
-       "viewCount",
-       "voteCount",
-       "votes",
-       "favoriteCount",
-       "favorites",
-       "tags",
-       "created",
-       "updated"
+        "id",
+        "code",
+        "title",
+        "slug",
+        "description",
+        "author",
+        "viewCount",
+        "voteCount",
+        "votes",
+        "favoriteCount",
+        "favorites",
+        "tags",
+        "created",
+        "updated"
     ]);
 };
 
 describe('Talk', function() {
+
+    before(function(done) {
+        if (!config.dburl) {
+            console.log("ERROR: DBURL environment variable doesn't exists!");
+            process.exit();
+        }
+        done();
+    });
 
     describe('get the latest talks', function() {
 
@@ -147,7 +155,6 @@ describe('Talk', function() {
             done();
         });
 
-
     });
 
     describe('get a talk', function() {
@@ -202,7 +209,6 @@ describe('Talk', function() {
             done();
         });
 
-
     });
 
     describe('vote a talk', function() {
@@ -229,7 +235,6 @@ describe('Talk', function() {
             should.equal(result, 1);
             done();
         });
-
 
     });
 
@@ -285,7 +290,6 @@ describe('Talk', function() {
             done();
         });
 
-
     });
 
 
@@ -316,7 +320,6 @@ describe('Talk', function() {
             done();
         });
 
-
     });
 
     describe('get a talk by its slug field', function() {
@@ -346,7 +349,6 @@ describe('Talk', function() {
             done();
         });
 
-
     });
 
     describe('get related talks', function() {
@@ -359,7 +361,7 @@ describe('Talk', function() {
                 if (err) {
                     throw new Error(err);
                 }
-                talks.related(config.dburl, docs, function(err, docs) {
+                talks.related(config.dburl, docs.id, docs.tags, 5, function(err, docs) {
                     if (err) {
                         throw new Error(err);
                     }
@@ -380,7 +382,6 @@ describe('Talk', function() {
             });
             done();
         });
-
 
     });
 
@@ -411,10 +412,9 @@ describe('Talk', function() {
             done();
         });
 
-
     });
 
-    describe('get talks upvoted by an user', function () {
+    describe('get talks upvoted by an user', function() {
 
         var result;
 
@@ -443,7 +443,7 @@ describe('Talk', function() {
 
     });
 
-    describe('get upvoted talks by an user', function () {
+    describe('get upvoted talks by an user', function() {
 
         var result;
 
@@ -496,7 +496,6 @@ describe('Talk', function() {
             should.equal(1, result);
             done();
         });
-
 
     });
 
