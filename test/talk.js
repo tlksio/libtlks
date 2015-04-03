@@ -42,7 +42,7 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.latest(config.dburl, 5, function(err, docs) {
+            talks.latest(config.dburl, 1, 5, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -76,7 +76,7 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.popular(config.dburl, 5, function(err, docs) {
+            talks.popular(config.dburl, 1, 5, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
