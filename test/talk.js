@@ -42,13 +42,13 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.latest(config.dburl, 1, 5, function(err, docs) {
+            talks.latest(config.dburl, 5, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
                 result = docs;
                 done();
-            });
+            }, 1);
         });
 
         it('returns not null', function(done) {
@@ -69,6 +69,8 @@ describe('Talk', function() {
         });
 
     });
+
+
 
     describe('get the most popular talks', function() {
 
@@ -76,13 +78,13 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.popular(config.dburl, 1, 5, function(err, docs) {
+            talks.popular(config.dburl, 5, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
                 result = docs;
                 done();
-            });
+            }, 1);
         });
 
         it('returns not null', function(done) {
@@ -103,6 +105,42 @@ describe('Talk', function() {
         });
 
     });
+
+
+   describe('get the most popular talks without passing pageNumber', function() {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            talks.popular(config.dburl, 10, function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });  
+        });     
+                
+        it('returns not null', function(done) {
+            should.notEqual(result, null);
+            done();
+        });
+        
+        it('returns an array', function(done) {
+            should.equal(true, util.isArray(result));
+            done();
+        });
+        
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        }); 
+                
+    });     
+          
 
     describe('create a new talk', function() {
 
@@ -305,7 +343,7 @@ describe('Talk', function() {
                 }
                 result = docs;
                 done();
-            });
+            }, 1);
         });
 
         it('returns not null', function(done) {
