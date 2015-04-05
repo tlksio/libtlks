@@ -1,3 +1,4 @@
+var MongoClient = require('mongodb').MongoClient;
 var should = require("should");
 var should = require('should');
 var util = require('util');
@@ -8,6 +9,10 @@ var config = {
     dburl: process.env.DBURL
 };
 
+/**
+ * validate an object to check if it is a valid user
+ * @param user  object user to check
+ */
 function isValidUser(user) {
     user.should.have.properties([
         "id",
@@ -22,6 +27,7 @@ function isValidUser(user) {
 };
 
 describe('User', function() {
+    "use strict";
 
     before(function(done) {
         if (!config.dburl) {
@@ -130,6 +136,25 @@ describe('User', function() {
             done();
         });
 
+    });
+
+    after(function(done) {
+        this.timeout(0);
+        MongoClient.connect(config.dburl, function(err, db) {
+            if (err) {
+                return callback(err, null);
+            }
+            var users = db.collection('users');
+            users.remove({
+                "username": "username"
+            }, function(err, data) {
+                if (err) {
+                    return callback(err, null);
+                }
+                db.close();
+                done();
+            });
+        });
     });
 
 });
