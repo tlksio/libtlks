@@ -32,7 +32,8 @@ gulp.task('jshint', function() {
     "use strict";
     return gulp.src(['./test/**/*.js', './lib/**/*.js', 'index.js', 'gulpfile.js'])
         .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('coveralls', function() {
