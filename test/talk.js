@@ -110,7 +110,7 @@ describe('Talk', function() {
     });
 
 
-   describe('get the most popular talks without passing pageNumber', function() {
+    describe('get most popular talks without passing pageNumber', function() {
 
         var result;
 
@@ -258,13 +258,18 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.upvote(config.dburl, "talk_id", "userid", function(err, docs) {
-                if (err) {
-                    throw new Error(err);
+            talks.upvote(
+                config.dburl,
+                "talk_id",
+                "userid",
+                function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
                 }
-                result = docs;
-                done();
-            });
+            );
         });
 
         it('returns not null', function(done) {
@@ -285,13 +290,18 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.favorite(config.dburl, "talk_id", "userid", function(err, docs) {
-                if (err) {
-                    throw new Error(err);
+            talks.favorite(
+                config.dburl,
+                "talk_id",
+                "userid",
+                function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
                 }
-                result = docs;
-                done();
-            });
+            );
         });
 
         it('returns not null', function(done) {
@@ -312,13 +322,18 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.unfavorite(config.dburl, "talk_id", "userid", function(err, docs) {
-                if (err) {
-                    throw new Error(err);
+            talks.unfavorite(
+                config.dburl,
+                "talk_id",
+                "userid",
+                function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
                 }
-                result = docs;
-                done();
-            });
+            );
         });
 
         it('returns not null', function(done) {
@@ -402,13 +417,19 @@ describe('Talk', function() {
                 if (err) {
                     throw new Error(err);
                 }
-                talks.related(config.dburl, docs.id, docs.tags, 5, function(err, docs) {
-                    if (err) {
-                        throw new Error(err);
+                talks.related(
+                    config.dburl,
+                    docs.id,
+                    docs.tags,
+                    5,
+                    function(err, docs) {
+                        if (err) {
+                            throw new Error(err);
+                        }
+                        result = docs;
+                        done();
                     }
-                    result = docs;
-                    done();
-                });
+                );
             });
         });
 
@@ -461,13 +482,17 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.getUpvotedByAuthorId(config.dburl, 'author_authorid', function(err, docs) {
-                if (err) {
-                    throw new Error(err);
+            talks.getUpvotedByAuthorId(
+                config.dburl,
+                'author_authorid',
+                function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
                 }
-                result = docs;
-                done();
-            });
+            );
         });
 
         it('returns not null', function(done) {
@@ -490,13 +515,17 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.getFavoritedByAuthorId(config.dburl, 'author_authorid', function(err, docs) {
-                if (err) {
-                    throw new Error(err);
+            talks.getFavoritedByAuthorId(
+                config.dburl,
+                'author_authorid',
+                function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
                 }
-                result = docs;
-                done();
-            });
+            );
         });
 
         it('returns not null', function(done) {

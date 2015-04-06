@@ -47,7 +47,7 @@ describe('User', function() {
             this.timeout(0);
             var user = {
                 "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                "avatar": "http://pbs.twimg.com/profile_images/xxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_normal.jpeg",
+                "avatar": "http://pbs.twimg.com/profile_images/x/xx.jpeg",
                 "username": "username",
                 "bio": "username biography",
                 "twitterId": 1234567890,
@@ -144,14 +144,14 @@ describe('User', function() {
         this.timeout(0);
         MongoClient.connect(config.dburl, function(err, db) {
             if (err) {
-                return callback(err, null);
+                throw new Error(err);
             }
             var users = db.collection('users');
             users.remove({
                 "username": "username"
-            }, function(err, data) {
+            }, function(err) {
                 if (err) {
-                    return callback(err, null);
+                    throw new Error(err);
                 }
                 db.close();
                 done();
