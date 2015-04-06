@@ -337,7 +337,7 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.getByTag(config.dburl, 'tag1', 1, function(err, docs) {
+            talks.getByTag(config.dburl, 'tag1', 25, 1, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
