@@ -24,7 +24,7 @@ function isValidUser(user) {
         "updated",
         "email",
     ]);
-};
+}
 
 describe('User', function() {
     "use strict";

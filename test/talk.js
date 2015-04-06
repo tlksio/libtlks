@@ -24,7 +24,7 @@ function isValidTalk(talk) {
         "created",
         "updated"
     ]);
-};
+}
 
 describe('Talk', function() {
 
@@ -42,13 +42,13 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.latest(config.dburl, 5, function(err, docs) {
+            talks.latest(config.dburl, 5, 1, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
                 result = docs;
                 done();
-            }, 1);
+            });
         });
 
         it('returns not null', function(done) {
@@ -78,13 +78,13 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.popular(config.dburl, 5, function(err, docs) {
+            talks.popular(config.dburl, 5, 1, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
                 result = docs;
                 done();
-            }, 1);
+            });
         });
 
         it('returns not null', function(done) {
@@ -113,7 +113,7 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.popular(config.dburl, 10, function(err, docs) {
+            talks.popular(config.dburl, 10, null, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -337,7 +337,7 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.getByTag(config.dburl, 'tag1', 1, function(err, docs) {
+            talks.getByTag(config.dburl, 'tag1', 25, 1, function(err, docs) {
                 if (err) {
                     throw new Error(err);
                 }
@@ -520,7 +520,7 @@ describe('Talk', function() {
                 if (err) {
                     throw new Error(err);
                 }
-                result = docs
+                result = docs;
                 done();
             });
         });
