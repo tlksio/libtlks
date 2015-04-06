@@ -9,7 +9,7 @@ var del = require('del');
 
 gulp.task('clean', function() {
     del(['node_modules', 'coverage'], function(err, delfiles) {
-        return err
+        return err;
     });
 });
 
@@ -27,7 +27,7 @@ gulp.task('dist', function() {
 });
 
 gulp.task('jshint', function() {
-    return gulp.src(['./lib/**/*.js', 'index.js', 'gulpfile.js'])
+    return gulp.src(['./test/**/*.js', './lib/**/*.js', 'index.js', 'gulpfile.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });

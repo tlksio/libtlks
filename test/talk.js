@@ -24,7 +24,7 @@ function isValidTalk(talk) {
         "created",
         "updated"
     ]);
-};
+}
 
 describe('Talk', function() {
 
@@ -520,7 +520,7 @@ describe('Talk', function() {
                 if (err) {
                     throw new Error(err);
                 }
-                result = docs
+                result = docs;
                 done();
             });
         });
