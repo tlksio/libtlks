@@ -8,7 +8,7 @@ var config = {
 };
 
 function isValidTalk(talk) {
-    "use strict";
+    'use strict';
 
     talk.should.have.properties([
         "id",
@@ -29,7 +29,7 @@ function isValidTalk(talk) {
 }
 
 describe('Talk', function() {
-    "use strict";
+    'use strict';
 
     before(function(done) {
         if (!config.dburl) {
@@ -562,8 +562,8 @@ describe('Talk', function() {
             done();
         });
 
-        it('successful delete is equal to 1', function(done) {
-            should.equal(1, result);
+        it('successful delete is greater than 0', function(done) {
+            (result).should.be.above(0);
             done();
         });
 
