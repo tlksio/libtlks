@@ -29,7 +29,7 @@ gulp.task('dist', function() {
 gulp.task('jshint', function() {
     return gulp.src(['./test/**/*.js', './lib/**/*.js', 'index.js', 'gulpfile.js'])
         .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        .pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('coveralls', function() {
