@@ -1,0 +1,20 @@
+{
+    "globals": {
+        "describe": false,
+        "it": false,
+        "before": false,
+        "after": false,
+        "callback": false
+    },
+	"node": true,
+	"esnext": true,
+	"bitwise": true,
+	"camelcase": true,
+	"curly": true,
+	"immed": true,
+	"newcap": true,
+	"noarg": true,
+	"undef": true,
+	"unused": "vars",
+	"strict": true
+}

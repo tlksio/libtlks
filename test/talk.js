@@ -8,6 +8,8 @@ var config = {
 };
 
 function isValidTalk(talk) {
+    "use strict";
+
     talk.should.have.properties([
         "id",
         "code",
@@ -27,6 +29,7 @@ function isValidTalk(talk) {
 }
 
 describe('Talk', function() {
+    "use strict";
 
     before(function(done) {
         if (!config.dburl) {
