@@ -14,6 +14,8 @@ var config = {
  * @param user  object user to check
  */
 function isValidUser(user) {
+    "use strict";
+
     user.should.have.properties([
         "id",
         "avatar",

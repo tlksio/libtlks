@@ -1,4 +1,11 @@
 {
+    "globals": {
+        "describe": false,
+        "it": false,
+        "before": false,
+        "after": false,
+        "callback": false
+    },
 	"node": true,
 	"esnext": true,
 	"bitwise": true,
