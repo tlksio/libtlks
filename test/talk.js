@@ -453,13 +453,18 @@ describe('Talk', function() {
 
         before(function(done) {
             this.timeout(0);
-            talks.getByAuthorId(config.dburl, 'talk_id', function(err, docs) {
-                if (err) {
-                    throw new Error(err);
-                }
-                result = docs;
-                done();
-            });
+            talks.getByAuthorId(
+                config.dburl,
+                'talk_id',
+                25,
+                1,
+                function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
+                });
         });
 
         it('returns not null', function(done) {
