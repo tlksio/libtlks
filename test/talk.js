@@ -514,7 +514,7 @@ describe('Talk', function() {
 
     });
 
-    describe('get upvoted talks by an user', function() {
+    describe('get favorited talks by an user', function() {
 
         var result;
 
@@ -523,6 +523,8 @@ describe('Talk', function() {
             talks.getFavoritedByAuthorId(
                 config.dburl,
                 'author_authorid',
+                25,
+                1,
                 function(err, docs) {
                     if (err) {
                         throw new Error(err);
