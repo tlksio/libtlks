@@ -490,6 +490,8 @@ describe('Talk', function() {
             talks.getUpvotedByAuthorId(
                 config.dburl,
                 'author_authorid',
+                25,
+                1,
                 function(err, docs) {
                     if (err) {
                         throw new Error(err);
