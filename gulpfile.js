@@ -10,7 +10,10 @@ var del = require('del');
 gulp.task('clean', function() {
     "use strict";
     del(['node_modules', 'coverage'], function(err, delfiles) {
-        return err;
+        if (err) {
+            return err;
+        }
+        return delfiles;
     });
 });
 
@@ -30,9 +33,15 @@ gulp.task('dist', function() {
 
 gulp.task('jshint', function() {
     "use strict";
-    return gulp.src(['./test/**/*.js', './lib/**/*.js', 'index.js', 'gulpfile.js'])
+    return gulp.src([
+            './test/**/*.js',
+            './lib/**/*.js',
+            'index.js',
+            'gulpfile.js'
+        ])
         .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('coveralls', function() {
