@@ -1,6 +1,6 @@
 {
   "name": "libtlks",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "tlks.io core library",
   "main": "index.js",
   "repository": {
@@ -28,6 +28,7 @@
     "gulp-sourcemaps": "^1.5.0",
     "gulp-uglify": "^1.1.0",
     "istanbul": "^0.3.6",
+    "jshint-reporter-jscs": "^0.1.0",
     "jshint-stylish": "^1.0.1",
     "mocha": "^2.1.0",
     "should": "^5.2.0"
