@@ -10,6 +10,7 @@ var config = {
 function isValidTalk(talk) {
     'use strict';
 
+
     talk.should.have.properties([
         "id",
         "code",
@@ -24,7 +25,8 @@ function isValidTalk(talk) {
         "favorites",
         "tags",
         "created",
-        "updated"
+        "updated",
+        "type"
     ]);
 }
 
@@ -173,7 +175,8 @@ describe('Talk', function() {
                     'tag3'
                 ],
                 created: 1423881000025,
-                updated: 1423881000025
+                updated: 1423881000025,
+                type: 'youtube'
             };
             talks.createTalk(config.dburl, talk, function(err, docs) {
                 if (err) {
