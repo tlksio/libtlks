@@ -62,7 +62,7 @@ describe('User', function() {
                 }
                 result = docs;
                 done();
-             })
+             });
         });
 
         it('returns not null', function(done) {
@@ -118,13 +118,16 @@ describe('User', function() {
 
         before(function(done) {
             this.timeout(0);
-            users.getById(config.dburl, "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy", function(err, docs) {
-                if (err) {
-                    throw new Error(err);
-                }
-                result = docs;
-                done();
-            });
+            users.getById(
+		config.dburl, 
+		"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy", 
+		function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
+                });
         });
 
         it('returns not null', function(done) {
@@ -158,18 +161,24 @@ describe('User', function() {
                 "email": "username2@tlks.io"
             };
 
-            users.create(config.dburl, user, function(err, docs) {
+            users.create(config.dburl, user, function(err) {
              	if (err) {
                     throw new Error(err);
                 }
-                users.getByIdentifiers(config.dburl, ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"], function(err, docs) {
-                    if (err) {
-                        throw new Error(err);
-                    }
-                    result = docs;
-                    done();
-                });
-             })
+                users.getByIdentifiers(
+		    config.dburl, 
+		    [
+			"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+			"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"
+		    ], 
+		    function(err, docs) {
+                        if (err) {
+                            throw new Error(err);
+                        }
+                        result = docs;
+                        done();
+                    });
+             });
         });
 
         it('returns not null', function(done) {
