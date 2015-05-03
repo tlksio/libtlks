@@ -407,6 +407,35 @@ describe('Talk', function() {
 
     });
 
+    describe('get a talk by its code field', function() {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            talks.getByCode(config.dburl, 'yY1FSsUV-8c', function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function(done) {
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
+    });
+
     describe('get related talks', function() {
 
         var result;
