@@ -111,6 +111,79 @@ describe('User', function() {
         });
 
     });
+    
+    describe('get user by its identifier', function() {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            users.getById(config.dburl, "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy", function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function(done) {
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('is valid user object', function(done) {
+            var user = result;
+            isValidUser(user);
+            done();
+        });
+
+    });
+
+    describe('get user by their identifiers', function() {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+
+            var user = {
+                "id": "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+                "avatar": "http://pbs.twimg.com/profile_images/y/yy.jpeg",
+                "username": "username2",
+                "bio": "username biography2",
+                "twitterId": 1234567891,
+                "created": 1423360369815,
+                "updated": 1423374082442,
+                "email": "username2@tlks.io"
+            };
+
+            users.create(config.dburl, user, function(err, docs) {
+             	if (err) {
+                    throw new Error(err);
+                }
+                users.getByIdentifiers(config.dburl, ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"], function(err, docs) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    result = docs;
+                    done();
+                });
+             })
+        });
+
+        it('returns not null', function(done) {
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('is valid user object', function(done) {
+            var user = result[0];
+            isValidUser(user);
+            done();
+        });
+
+    });
 
     describe('update user', function() {
 
