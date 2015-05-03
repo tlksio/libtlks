@@ -120,7 +120,7 @@ describe('User', function() {
             this.timeout(0);
             users.getById(
 		config.dburl, 
-		"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy", 
+		"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
 		function(err, docs) {
                     if (err) {
                         throw new Error(err);
