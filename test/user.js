@@ -41,11 +41,11 @@ describe('User', function() {
 
     describe('create a new user', function() {
 
-        var result;
+        var result = [];
 
         before(function(done) {
             this.timeout(0);
-            var user = {
+            var userList = [{
                 "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                 "avatar": "http://pbs.twimg.com/profile_images/x/xx.jpeg",
                 "username": "username",
@@ -54,14 +54,35 @@ describe('User', function() {
                 "created": 1423360369814,
                 "updated": 1423374082441,
                 "email": "username@tlks.io"
-            };
-            users.create(config.dburl, user, function(err, docs) {
-                if (err) {
-                    throw new Error(err);
-                }
-                result = docs;
-                done();
-            });
+             },
+             {
+                "id": "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+                "avatar": "http://pbs.twimg.com/profile_images/y/yy.jpeg",
+                "username": "username2",
+                "bio": "username biography2",
+                "twitterId": 1234567891,
+                "created": 1423360369815,
+                "updated": 1423374082442,
+                "email": "username2@tlks.io"
+            }]; 
+
+            async.map(
+		userList, 
+		function(user) {
+console.log(userList);
+                /*    users.create(config.dburl, user, function(err, docs) {
+                        if (err) {
+                            throw new Error(err);
+                        }
+                        result.push(docs);
+                   })*/
+		}, 
+
+		function(err, results) {
+console.log(err, results);
+                    done();
+	        }
+	    );
         });
 
         it('returns not null', function(done) {
