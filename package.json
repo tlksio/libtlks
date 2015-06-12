@@ -38,6 +38,6 @@
     "mongodb": "^1.4.30"
   },
   "scripts": {
-    "test": "make all"
+    "test": "make lint && make cover"
   }
 }
