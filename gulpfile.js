@@ -37,7 +37,8 @@ gulp.task('jshint', function() {
             './test/**/*.js',
             './lib/**/*.js',
             'index.js',
-            'gulpfile.js'
+            'gulpfile.js',
+            'package.json'
         ])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-reporter-jscs'))
