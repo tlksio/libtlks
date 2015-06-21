@@ -41,6 +41,40 @@ describe('Talk', function() {
         done();
     });
 
+    describe('get a random talk', function() {
+
+        var result;
+
+        before(function(done) {
+            this.timeout(0);
+            talks.getRandom(config.dburl, function(err, docs) {
+                if (err) {
+                    throw new Error(err);
+                }
+                result = docs;
+                done();
+            });
+        });
+
+        it('returns not null', function(done) {
+            should.notEqual(result, null);
+            done();
+        });
+
+        it('returns an array', function(done) {
+            should.equal(true, util.isArray(result));
+            done();
+        });
+
+        it('is valid talk object', function(done) {
+            result.forEach(function(el) {
+                isValidTalk(el);
+            });
+            done();
+        });
+
+    });
+
     describe('get the latest talks', function() {
 
         var result;
